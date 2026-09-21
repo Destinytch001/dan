@@ -1,0 +1,246 @@
+[2026-09-06T01:45:22.547Z] SECURITY: New signup {"user_id":1,"role":"customer","ip":"::1"}
+[2026-09-07T10:48:55.667Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T11:48:52.618Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T11:48:52.633Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T11:48:52.681Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:20:02.501Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:20:02.510Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:51:57.309Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:51:57.312Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:51:57.313Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T12:51:57.315Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T16:04:54.187Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-07T16:05:15.160Z] SECURITY: Logout {"user_id":1}
+[2026-09-07T16:05:18.758Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-07T16:15:09.407Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-07T16:15:09.409Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-07T18:29:08.258Z] SECURITY: New signup {"user_id":2,"role":"agent","ip":"::1"}
+[2026-09-07T22:20:25.768Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T23:10:52.430Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T23:10:52.431Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T23:29:32.233Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-07T23:29:32.250Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T04:39:55.300Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T04:39:55.302Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T05:20:21.899Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T05:20:21.901Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T05:59:33.755Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T05:59:33.757Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T06:43:34.687Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T06:43:34.689Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:14:38.619Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:14:38.620Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:14:40.448Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:14:40.449Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:45:19.861Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T07:45:19.862Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T08:15:35.801Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T08:15:35.805Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T08:15:36.250Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T08:48:21.546Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-08T08:48:59.965Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T08:48:59.971Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T08:49:14.010Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-08T08:50:09.306Z] SECURITY: Logout {"user_id":2}
+[2026-09-08T08:50:35.578Z] SECURITY: Failed login: wrong password {"user_id":1,"ip":"::1"}
+[2026-09-08T08:54:46.758Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-08T08:54:56.621Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-08T09:05:54.901Z] SECURITY: Logout {"user_id":1}
+[2026-09-08T09:09:17.051Z] SECURITY: New signup {"user_id":3,"role":"company","ip":"::1"}
+[2026-09-08T09:27:41.387Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-08T09:39:17.005Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T09:39:17.008Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T09:39:17.009Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T09:39:17.182Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T09:39:17.183Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T09:39:17.184Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-08T12:44:17.907Z] SECURITY: Logout {"user_id":2}
+[2026-09-08T16:29:22.613Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T16:29:22.615Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-08T16:42:21.393Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-08T16:42:26.423Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-08T18:42:05.729Z] SECURITY: Logout {"user_id":3}
+[2026-09-08T23:09:10.427Z] SECURITY: Logout {"user_id":1}
+[2026-09-09T13:14:55.935Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T08:24:04.548Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T08:28:35.539Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T08:28:40.693Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T08:30:28.284Z] SECURITY: Successful login {"user_id":3,"ip":"::1"}
+[2026-09-11T09:04:46.636Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T09:11:13.636Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T09:11:18.663Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T09:12:13.162Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T09:12:17.915Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T09:12:47.783Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T09:12:52.764Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T09:13:06.913Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T09:13:12.295Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T09:25:53.312Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T09:26:39.612Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T09:26:45.501Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T09:27:05.463Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T09:27:10.375Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T09:29:50.418Z] SECURITY: Successful login {"user_id":3,"ip":"::1"}
+[2026-09-11T10:00:41.814Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:41.816Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:41.817Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:42.077Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:42.078Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:42.079Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:42.081Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T10:00:42.127Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T10:00:42.129Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T11:06:06.715Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T11:06:06.716Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T11:06:06.717Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T13:23:41.203Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T14:11:39.021Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T14:16:28.661Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T14:16:35.140Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T14:23:04.512Z] SECURITY: Successful login {"user_id":3,"ip":"::1"}
+[2026-09-11T14:23:47.204Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T14:23:55.376Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T14:24:00.768Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T14:25:24.997Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T14:40:39.533Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T14:40:44.152Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T14:55:04.999Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T14:55:28.069Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T14:55:34.680Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T15:08:27.390Z] SECURITY: Failed login: unknown identifier {"ip":"::1"}
+[2026-09-11T15:08:40.847Z] SECURITY: Failed login: unknown identifier {"ip":"::1"}
+[2026-09-11T15:18:43.814Z] SECURITY: Failed login: unknown identifier {"ip":"::1"}
+[2026-09-11T15:19:13.496Z] SECURITY: Failed login: unknown identifier {"ip":"::1"}
+[2026-09-11T15:29:20.531Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-11T15:30:39.629Z] SECURITY: Logout {"user_id":53}
+[2026-09-11T15:30:41.938Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-11T15:42:41.418Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.421Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.422Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.423Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.424Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.426Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.427Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T15:42:41.471Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T15:42:41.474Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T15:42:41.485Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T15:42:41.488Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T15:48:25.330Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T15:49:37.886Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T15:49:43.041Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T15:54:05.985Z] SECURITY: Logout {"user_id":2}
+[2026-09-11T15:56:28.122Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-11T15:57:31.357Z] SECURITY: Logout {"user_id":1}
+[2026-09-11T15:57:41.468Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T16:00:59.841Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T16:17:11.147Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T16:47:42.962Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T16:47:43.277Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:07.991Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:07.994Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:07.995Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:07.997Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:07.999Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:08.001Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:08.012Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T17:01:08.031Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-11T18:38:24.309Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T19:01:03.111Z] SECURITY: Admin viewed company CAC document {"company_id":1,"admin_id":53}
+[2026-09-11T19:01:09.390Z] SECURITY: Company verified {"company_id":1,"admin_id":53}
+[2026-09-11T19:01:28.110Z] SECURITY: Account suspended {"target_user_id":2,"admin_id":53}
+[2026-09-11T19:03:44.444Z] SECURITY: Account reactivated {"target_user_id":2,"admin_id":53}
+[2026-09-11T19:19:40.954Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T19:19:41.005Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T19:19:41.008Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-11T19:35:56.565Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-11T19:38:52.032Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-12T01:47:37.345Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T01:58:24.261Z] SECURITY: Logout {"user_id":53}
+[2026-09-12T01:58:28.733Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-12T02:03:36.169Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-12T02:57:24.407Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T02:57:24.419Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T02:57:24.422Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T03:28:06.390Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T03:28:06.392Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T03:28:06.394Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:05:06.131Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:05:06.133Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:05:06.133Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:35:07.937Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:35:07.939Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T04:35:07.940Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T05:05:11.729Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T05:05:11.731Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T05:05:11.732Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-12T05:05:11.756Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-12T08:52:10.210Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-13T23:10:00.503Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-13T23:10:00.506Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-17T13:54:51.305Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T14:56:12.545Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T15:44:44.692Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T15:44:44.707Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T15:44:44.750Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T16:14:57.799Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T16:14:57.806Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T16:15:39.417Z] SECURITY: Logout {"user_id":53}
+[2026-09-17T16:15:41.819Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T16:17:11.156Z] SECURITY: Logout {"user_id":53}
+[2026-09-17T16:26:55.189Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T16:36:14.322Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T16:44:30.333Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T17:14:41.054Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T17:14:41.071Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T17:51:31.333Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T17:51:31.425Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T18:47:11.502Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T18:47:11.628Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T20:44:04.197Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T20:44:04.201Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T20:59:07.499Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T21:10:39.320Z] SECURITY: Successful login {"user_id":53,"ip":"::1"}
+[2026-09-17T21:11:10.967Z] SECURITY: Logout {"user_id":2}
+[2026-09-17T21:11:47.225Z] SECURITY: Successful login {"user_id":1,"ip":"::1"}
+[2026-09-17T21:50:19.713Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T21:50:19.722Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T21:50:19.727Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T21:50:19.729Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-17T21:52:51.172Z] SECURITY: Rejected invalid/expired access token {"ip":"::1"}
+[2026-09-18T10:20:55.238Z] SECURITY: Successful login {"user_id":2,"ip":"::1"}
+[2026-09-18T10:21:14.621Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-18T10:21:14.630Z] SECURITY: Rejected invalid refresh token {"ip":"::1"}
+[2026-09-18T10:21:27.748Z] SECURITY: Logout {"user_id":3}
+[2026-09-21T02:21:41.809Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties/types"}
+[2026-09-21T02:21:41.828Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties"}
+[2026-09-21T02:21:41.831Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/page-items"}
+[2026-09-21T02:21:41.834Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:21:41.836Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:21:46.772Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:21:46.774Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:23:12.147Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:23:12.157Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:23:13.364Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties/types"}
+[2026-09-21T02:23:13.368Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties"}
+[2026-09-21T02:23:13.370Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/page-items"}
+[2026-09-21T02:23:13.371Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:23:13.372Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:23:16.363Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties/types"}
+[2026-09-21T02:23:16.365Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties"}
+[2026-09-21T02:23:16.367Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/page-items"}
+[2026-09-21T02:23:16.375Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:23:16.378Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:26:15.545Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties/types"}
+[2026-09-21T02:26:15.583Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties"}
+[2026-09-21T02:26:15.586Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/page-items"}
+[2026-09-21T02:26:15.588Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:26:15.590Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:26:21.727Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties/types"}
+[2026-09-21T02:26:21.728Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/properties"}
+[2026-09-21T02:26:21.745Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/page-items"}
+[2026-09-21T02:26:21.754Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:26:21.756Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:26:22.898Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:26:22.900Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
+[2026-09-21T02:26:24.495Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/help-topics"}
+[2026-09-21T02:26:24.499Z] SECURITY: Blocked CORS request {"origin":"http://localhost:5173","path":"/content/blog"}
