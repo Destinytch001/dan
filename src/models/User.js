@@ -50,6 +50,10 @@ async function markEmailVerified(userId) {
   );
 }
 
+async function deleteById(userId) {
+  await pool.execute('DELETE FROM users WHERE id = ?', [userId]);
+}
+
 async function updatePasswordHash(userId, newPassword) {
   const passwordHash = await bcrypt.hash(newPassword, 12);
   await pool.execute('UPDATE users SET password_hash = ? WHERE id = ?', [passwordHash, userId]);
@@ -161,6 +165,7 @@ module.exports = {
   findById,
   create,
   markEmailVerified,
+  deleteById,
   updatePasswordHash,
   recordSuccessfulLogin,
   registerFailedLogin,

@@ -102,35 +102,60 @@ router.post(
     if (role === 'agent') idDocPath = await storeDocument(idFile.buffer, 'agent-ids');
     if (role === 'company') cacDocPath = await storeDocument(cacFile.buffer, 'cac-certificates');
 
-    const userId = await withTransaction(async (conn) => {
-      const id = await User.create(conn, { email: data.email, phone: data.phone, password: data.password, role });
+    let userId = null;
+    try {
+      userId = await withTransaction(async (conn) => {
+        const id = await User.create(conn, { email: data.email, phone: data.phone, password: data.password, role });
 
-      if (role === 'customer') await CustomerProfile.create(conn, id, data.fullName);
+        if (role === 'customer') await CustomerProfile.create(conn, id, data.fullName);
+        if (role === 'agent') {
+          await AgentProfile.create(conn, id, data.fullName, idDocPath, pendingInvite.company_id);
+          await conn.execute(
+            `INSERT INTO company_agents (company_id, agent_id, status, joined_at) VALUES (?, ?, 'active', NOW())`,
+            [pendingInvite.company_id, id]
+          );
+          await CompanyAgentInvite.accept(conn, pendingInvite.id, id);
+        }
+        if (role === 'company') await Company.create(conn, id, data.companyName, data.companyAddress, data.cacNumber, cacDocPath);
+
+        return id;
+      });
+
       if (role === 'agent') {
-        await AgentProfile.create(conn, id, data.fullName, idDocPath, pendingInvite.company_id);
-        await conn.execute(
-          `INSERT INTO company_agents (company_id, agent_id, status, joined_at) VALUES (?, ?, 'active', NOW())`,
-          [pendingInvite.company_id, id]
-        );
-        await CompanyAgentInvite.accept(conn, pendingInvite.id, id);
+        // Best-effort tidy-up, not correctness-critical -- the invite that
+        // actually mattered was already accepted above.
+        await CompanyAgentInvite.expireOtherPendingForEmail(data.email, pendingInvite.id);
       }
-      if (role === 'company') await Company.create(conn, id, data.companyName, data.companyAddress, data.cacNumber, cacDocPath);
 
-      return id;
-    });
+      const otp = await OtpCode.generateAndStore(userId, 'signup_verification');
+      const sent = await sendOtp(data.email, otp, 'verify your HouseBank account');
+      if (!sent) {
+        throw new Error('Verification email delivery failed.');
+      }
 
-    if (role === 'agent') {
-      // Best-effort tidy-up, not correctness-critical -- the invite that
-      // actually mattered was already accepted above.
-      await CompanyAgentInvite.expireOtherPendingForEmail(data.email, pendingInvite.id);
+      logger.security('New signup', { user_id: userId, role, ip: req.ip, company_id: role === 'agent' ? pendingInvite.company_id : undefined });
+
+      return response.created(res, { user_id: userId, email: data.email }, 'Account created. Please check your email for a verification code.');
+    } catch (err) {
+      if (userId) {
+        try {
+          await User.deleteById(userId);
+        } catch (cleanupErr) {
+          logger.error('Failed to roll back partial signup user record', {
+            userId,
+            email: data.email,
+            cleanupError: cleanupErr.message,
+          });
+        }
+      }
+      logger.error('Signup failed and user record was rolled back', {
+        userId,
+        email: data.email,
+        role,
+        error: err && err.message ? err.message : String(err),
+      });
+      return response.serverError(res, 'We could not complete your signup because the verification email could not be sent. Please try again.');
     }
-
-    const otp = await OtpCode.generateAndStore(userId, 'signup_verification');
-    await sendOtp(data.email, otp, 'verify your HouseBank account');
-
-    logger.security('New signup', { user_id: userId, role, ip: req.ip, company_id: role === 'agent' ? pendingInvite.company_id : undefined });
-
-    return response.created(res, { user_id: userId, email: data.email }, 'Account created. Please check your email for a verification code.');
   })
 );
 
