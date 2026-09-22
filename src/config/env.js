@@ -39,11 +39,17 @@ const env = {
   SMTP_FROM_EMAIL: process.env.SMTP_FROM_EMAIL || 'no-reply@housebank.local',
   SMTP_FROM_NAME: process.env.SMTP_FROM_NAME || 'HouseBank',
 
-  // 'smtp' (default) or 'brevo' -- see utils/mailer.js. Lets OTP delivery
-  // switch to Brevo's HTTP API without touching any call site, which is
-  // useful when SMTP auth on the hosting account is broken or blocked.
-  MAIL_DRIVER: process.env.MAIL_DRIVER === 'brevo' ? 'brevo' : 'smtp',
-  BREVO_API_KEY: process.env.BREVO_API_KEY || '',
+  // Prefer Brevo whenever a key is present; keep SMTP only as an explicit
+  // fallback or when no Brevo key is configured. This keeps the app working
+  // for existing SMTP setups while making the Brevo API the default for
+  // the current setup using BREVO_API_KEY in .env.
+  BREVO_API_KEY: (process.env.BREVO_API_KEY || '').trim(),
+  MAIL_DRIVER: (() => {
+    const driver = (process.env.MAIL_DRIVER || '').toLowerCase().trim();
+    if (driver === 'smtp') return 'smtp';
+    if (driver === 'brevo' || (process.env.BREVO_API_KEY || '').trim()) return 'brevo';
+    return 'smtp';
+  })(),
 
   // Twilio SMS (Joan, Sep 2026: "sms notification is on payments,
   // bookings and approvals only") -- see src/utils/sms.js. Optional: if
