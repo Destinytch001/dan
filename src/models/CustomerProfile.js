@@ -52,7 +52,7 @@ async function listForAdmin({ q, accountStatus } = {}, page = 1, perPage = 20) {
   const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
 
   const [countRows] = await pool.query(
-    `SELECT COUNT(*) AS total FROM customer_profiles cp JOIN users u ON u.id = cp.user_id WHERE u.deleted_at IS NULL ${whereSql ? `AND ${whereSql.replace(/^WHERE /, '')}` : ''}`,
+    `SELECT COUNT(*) AS total FROM customer_profiles cp JOIN users u ON u.id = cp.user_id ${whereSql}`,
     params
   );
   const total = countRows[0].total;
@@ -66,7 +66,7 @@ async function listForAdmin({ q, accountStatus } = {}, page = 1, perPage = 20) {
             (SELECT COUNT(*) FROM investments i WHERE i.investor_user_id = cp.user_id) AS investment_count
      FROM customer_profiles cp
      JOIN users u ON u.id = cp.user_id
-     WHERE u.deleted_at IS NULL ${whereSql ? `AND ${whereSql.replace(/^WHERE /, '')}` : ''}
+     ${whereSql}
      ORDER BY u.created_at DESC
      LIMIT ${Number(perPage)} OFFSET ${Number(offset)}`,
     params

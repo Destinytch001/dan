@@ -94,7 +94,7 @@ async function listForAdmin({ status, q } = {}, page = 1, perPage = 20) {
   const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
 
   const [countRows] = await pool.query(
-    `SELECT COUNT(*) AS total FROM companies c JOIN users u ON u.id = c.user_id WHERE u.deleted_at IS NULL ${whereSql ? `AND ${whereSql.replace(/^WHERE /, '')}` : ''}`,
+    `SELECT COUNT(*) AS total FROM companies c JOIN users u ON u.id = c.user_id ${whereSql}`,
     params
   );
   const total = countRows[0].total;
@@ -108,7 +108,7 @@ async function listForAdmin({ status, q } = {}, page = 1, perPage = 20) {
             (SELECT COUNT(*) FROM company_agents ca WHERE ca.company_id = c.id AND ca.status = 'active') AS realtor_count
      FROM companies c
      JOIN users u ON u.id = c.user_id
-     WHERE u.deleted_at IS NULL ${whereSql ? `AND ${whereSql.replace(/^WHERE /, '')}` : ''}
+     ${whereSql}
      ORDER BY (c.verification_status = 'pending') DESC, c.created_at DESC
      LIMIT ${Number(perPage)} OFFSET ${Number(offset)}`,
     params
@@ -121,7 +121,7 @@ async function listForAdmin({ status, q } = {}, page = 1, perPage = 20) {
 async function findByIdForAdmin(id) {
   const [rows] = await pool.execute(
     `SELECT c.*, u.email, u.phone, u.status AS account_status, u.created_at AS account_created_at
-     FROM companies c JOIN users u ON u.id = c.user_id WHERE c.id = ? AND u.deleted_at IS NULL`,
+     FROM companies c JOIN users u ON u.id = c.user_id WHERE c.id = ?`,
     [id]
   );
   return rows[0] || null;
