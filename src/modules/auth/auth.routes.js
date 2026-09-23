@@ -154,7 +154,11 @@ router.post(
         role,
         error: err && err.message ? err.message : String(err),
       });
-      return response.serverError(res, 'We could not complete your signup because the verification email could not be sent. Please try again.');
+      return response.validationError(
+        res,
+        { _: ['We could not complete your signup because the verification email could not be sent. Please try again.'] },
+        'Signup could not be completed.'
+      );
     }
   })
 );
@@ -216,7 +220,7 @@ router.post(
 /** POST /auth/signin — Body: { userName, password }. `userName` accepts an email or phone. */
 router.post(
   '/signin',
-  enforce(byIp, 15, 900, 'Too many sign-in attempts from this network. Please try again later.'),
+  enforce(byIp, 100, 900, 'Too many sign-in attempts from this network. Please try again later.'),
   wrap(async (req, res) => {
     const v = new Validator(req.body);
     v.required('userName').required('password');
@@ -292,7 +296,7 @@ router.post(
  */
 router.post(
   '/2fa/verify-login',
-  enforce((req) => `2fa-verify-ip:${req.ip}`, 20, 900, 'Too many attempts from this network. Please try again later.'),
+  enforce((req) => `2fa-verify-ip:${req.ip}`, 100, 900, 'Too many attempts from this network. Please try again later.'),
   wrap(async (req, res) => {
     const v = new Validator(req.body);
     v.required('pending_token');
@@ -373,7 +377,7 @@ router.post(
 router.post(
   '/2fa/request-code',
   requireAuth,
-  enforce((req) => `2fa-request:${req.authUser.sub}`, 5, 900, 'Too many code requests. Please wait a few minutes.'),
+  enforce((req) => `2fa-request:${req.authUser.sub}`, 100, 900, 'Too many code requests. Please wait a few minutes.'),
   wrap(async (req, res) => {
     const v = new Validator(req.body);
     v.required('current_password');
@@ -534,7 +538,7 @@ router.get(
 router.post(
   '/change-password',
   requireAuth,
-  enforce((req) => `change-password:${req.authUser.sub}`, 5, 900, 'Too many attempts. Please wait before trying again.'),
+  enforce((req) => `change-password:${req.authUser.sub}`, 100, 900, 'Too many attempts. Please wait before trying again.'),
   wrap(async (req, res) => {
     const v = new Validator(req.body);
     v.required('current_password');
@@ -569,7 +573,7 @@ router.post(
 /** POST /auth/forgot-password — Body: { email }. Always generic — no account enumeration. */
 router.post(
   '/forgot-password',
-  enforce((req) => `forgot-password:${req.ip}`, 5, 900),
+  enforce((req) => `forgot-password:${req.ip}`, 100, 900),
   wrap(async (req, res) => {
     const v = new Validator(req.body);
     v.required('email').email('email');
