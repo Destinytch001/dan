@@ -4,28 +4,19 @@ const { env } = require('../config/env');
 const { logger } = require('./logger');
 
 /**
- * Two interchangeable email transports, selected by MAIL_DRIVER in
- * .env ('smtp', the default, or 'brevo'). Every call site still just
- * calls sendMail()/sendOtp() below — neither knows or cares which
- * transport is actually sending.
+ * Mail transports, selected by MAIL_DRIVER in .env. The app now prefers
+ * Resend whenever its API key is present, keeps SMTP as the explicit
+ * fallback, and still supports Brevo only as an opt-in secondary route.
  *
  * SMTP via nodemailer: on Namecheap cPanel, the simplest setup is to
  * create a mailbox (cPanel → Email Accounts) for your domain and point
  * SMTP_HOST/USER/PASS at it. nodemailer 10 is ESM-only, loaded via
  * dynamic import() and cached (see the matching comment in
  * utils/fileUpload.js for why this project stays CommonJS overall).
- * This version is deliberate, not incidental: nodemailer <=9 carries
- * several disclosed high-severity issues (SMTP command injection via
- * CRLF, SSRF via the raw-message option) that are fixed in 10.
  *
- * Brevo (formerly Sendinblue) via their transactional-email HTTP API:
- * one POST per email, authenticated with an API key over HTTPS —
- * there's no SMTP handshake/login to get wrong, which is exactly the
- * class of problem (`535 Incorrect authentication data`) that's been
- * blocking real signups on the SMTP path. Uses Node's built-in fetch
- * (Node 18+, no new dependency). To switch: set MAIL_DRIVER=brevo and
- * BREVO_API_KEY in .env — SMTP_FROM_EMAIL/SMTP_FROM_NAME are reused as
- * the sender identity for both drivers, so nothing else needs to change.
+ * Resend via their transactional-email HTTP API: one POST per email,
+ * authenticated with a bearer token. SMTP remains the fallback path if
+ * no Resend API key is configured or when MAIL_DRIVER=smtp is explicit.
  */
 let transporterPromise = null;
 
@@ -68,6 +59,42 @@ async function sendViaSmtp(toEmail, subject, html) {
   }
 }
 
+async function sendViaResend(toEmail, subject, html) {
+  if (!env.RESEND_API_KEY) {
+    logger.warning('RESEND_API_KEY not configured — emails will be logged, not sent.');
+    return false;
+  }
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `${env.SMTP_FROM_NAME} <${env.SMTP_FROM_EMAIL}>`,
+        to: [toEmail],
+        subject,
+        html,
+      }),
+    });
+
+    if (!res.ok) {
+      const bodyText = await res.text().catch(() => '');
+      logger.error('Failed to send email via Resend', {
+        to: toEmail,
+        status: res.status,
+        body: bodyText.slice(0, 500),
+      });
+      return false;
+    }
+    return true;
+  } catch (err) {
+    logger.error('Failed to send email via Resend', { to: toEmail, error: err.message });
+    return false;
+  }
+}
+
 async function sendViaBrevo(toEmail, subject, html) {
   if (!env.BREVO_API_KEY) {
     logger.warning('BREVO_API_KEY not configured — emails will be logged, not sent.');
@@ -106,7 +133,9 @@ async function sendViaBrevo(toEmail, subject, html) {
 }
 
 async function sendMail(toEmail, subject, html) {
-  return env.MAIL_DRIVER === 'brevo' ? sendViaBrevo(toEmail, subject, html) : sendViaSmtp(toEmail, subject, html);
+  if (env.MAIL_DRIVER === 'resend') return sendViaResend(toEmail, subject, html);
+  if (env.MAIL_DRIVER === 'brevo') return sendViaBrevo(toEmail, subject, html);
+  return sendViaSmtp(toEmail, subject, html);
 }
 
 async function sendOtp(toEmail, code, purposeLabel) {
@@ -146,6 +175,15 @@ async function sendOtp(toEmail, code, purposeLabel) {
  * take the whole API down, everything else still works without it.
  */
 async function verifyMailTransport() {
+  if (env.MAIL_DRIVER === 'resend') {
+    if (!env.RESEND_API_KEY) {
+      logger.warning('Mail transport: MAIL_DRIVER=resend but RESEND_API_KEY is not set -- emails will not send.');
+      return;
+    }
+    logger.info('Mail transport: Resend API key configured OK.');
+    return;
+  }
+
   if (env.MAIL_DRIVER === 'brevo') {
     if (!env.BREVO_API_KEY) {
       logger.warning('Mail transport: MAIL_DRIVER=brevo but BREVO_API_KEY is not set -- emails will not send.');
