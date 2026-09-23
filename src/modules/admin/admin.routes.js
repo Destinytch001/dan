@@ -411,15 +411,8 @@ router.post(
   '/users/:id/activate',
   wrap(async (req, res) => {
     const id = Number(req.params.id);
-    const user = await User.findByIdIncludingDeleted(id);
+    const user = await User.findById(id);
     if (!user) return response.notFound(res, 'User not found.');
-    if (user.role === 'admin') {
-      logger.security('Blocked attempt to reactivate an admin account', { target_user_id: id, admin_id: req.authUser.sub });
-      return response.forbidden(res, 'Admin accounts cannot be reactivated from here.');
-    }
-    if (user.deleted_at) {
-      await User.restoreDeleted(id);
-    }
     await User.setStatus(id, 'active');
     await Notification.create(id, 'account', 'Account reactivated', 'Your HouseBank account has been reactivated.');
     logger.security('Account reactivated', { target_user_id: id, admin_id: req.authUser.sub });
