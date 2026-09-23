@@ -54,16 +54,6 @@ async function deleteById(userId) {
   await pool.execute('DELETE FROM users WHERE id = ?', [userId]);
 }
 
-async function softDelete(userId) {
-  await pool.execute(
-    `UPDATE users
-       SET deleted_at = NOW(),
-           updated_at = NOW()
-     WHERE id = ? AND deleted_at IS NULL`,
-    [userId]
-  );
-}
-
 async function updatePasswordHash(userId, newPassword) {
   const passwordHash = await bcrypt.hash(newPassword, 12);
   await pool.execute('UPDATE users SET password_hash = ? WHERE id = ?', [passwordHash, userId]);
@@ -176,7 +166,6 @@ module.exports = {
   create,
   markEmailVerified,
   deleteById,
-  softDelete,
   updatePasswordHash,
   recordSuccessfulLogin,
   registerFailedLogin,
