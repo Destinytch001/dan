@@ -44,7 +44,7 @@ async function issueTokens(user, req) {
  */
 router.post(
   '/signup',
-  enforce((req) => `signup:${req.ip}`, 10, 3600, 'Too many signup attempts from this network. Please try again later.'),
+  enforce((req) => `signup:${req.ip}`, 100, 3600, 'Too many signup attempts from this network. Please try again later.'),
   upload.fields([{ name: 'idFile', maxCount: 1 }, { name: 'cacFile', maxCount: 1 }]),
   wrap(async (req, res) => {
     const role = req.body.role;
