@@ -380,6 +380,32 @@ router.post(
   })
 );
 
+async function archiveUserAccount(req, res) {
+  const id = Number(req.params.id);
+  const user = await User.findById(id);
+  if (!user) return response.notFound(res, 'User not found.');
+  if (user.role === 'admin') {
+    logger.security('Blocked attempt to archive an admin account', { target_user_id: id, admin_id: req.authUser.sub });
+    return response.forbidden(res, 'Admin accounts cannot be archived from here.');
+  }
+
+  const reason = req.body && typeof req.body.reason === 'string' ? req.body.reason.trim() : '';
+  if (reason.length > 255) {
+    return response.validationError(res, { reason: ['Reason must be 255 characters or fewer.'] });
+  }
+
+  await User.softDelete(id);
+  await Notification.create(id, 'account', 'Account archived', 'Your HouseBank account has been archived by an administrator.');
+  logger.security('Account archived', { target_user_id: id, archive_reason: reason || null, admin_id: req.authUser.sub });
+  return response.success(res, null, 'Account archived.');
+}
+
+/** POST /admin/users/:id/archive — soft delete: keeps the record but hides it from every active query. */
+router.post('/users/:id/archive', wrap(async (req, res) => archiveUserAccount(req, res)));
+
+/** POST /admin/users/:id/delete — alias kept for admin UI naming and compatibility. */
+router.post('/users/:id/delete', wrap(async (req, res) => archiveUserAccount(req, res)));
+
 /** POST /admin/users/:id/activate */
 router.post(
   '/users/:id/activate',
