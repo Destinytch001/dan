@@ -150,7 +150,7 @@ async function startServer() {
       logger.info(`HouseBank API listening on port ${env.PORT} (${env.NODE_ENV})`);
       // eslint-disable-next-line no-console
       console.log(`HouseBank API listening on port ${env.PORT} (${env.NODE_ENV})`);
-      // Fire-and-forget -- logs a clear pass/fail for whichever mail driver
+      // Fire-and-forget - logs a clear pass/fail for whichever mail driver
       // is configured without delaying the port bind (see mailer.js's own
       // comment on verifyMailTransport for why this exists).
       verifyMailTransport();
