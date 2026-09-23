@@ -31,6 +31,11 @@ async function findById(id) {
   return rows[0] || null;
 }
 
+async function findByIdIncludingDeleted(id) {
+  const [rows] = await pool.execute('SELECT * FROM users WHERE id = ? LIMIT 1', [id]);
+  return rows[0] || null;
+}
+
 async function create(connection, { email, phone, password, role }) {
   const passwordHash = await bcrypt.hash(password, 12);
   const [result] = await connection.execute(
@@ -60,6 +65,17 @@ async function softDelete(userId) {
        SET deleted_at = NOW(),
            updated_at = NOW()
      WHERE id = ? AND deleted_at IS NULL`,
+    [userId]
+  );
+}
+
+async function restoreDeleted(userId) {
+  await pool.execute(
+    `UPDATE users
+       SET deleted_at = NULL,
+           status = 'active',
+           updated_at = NOW()
+     WHERE id = ?`,
     [userId]
   );
 }
@@ -173,10 +189,12 @@ module.exports = {
   findByPhone,
   findByIdentifier,
   findById,
+  findByIdIncludingDeleted,
   create,
   markEmailVerified,
   deleteById,
   softDelete,
+  restoreDeleted,
   updatePasswordHash,
   recordSuccessfulLogin,
   registerFailedLogin,
