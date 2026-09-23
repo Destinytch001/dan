@@ -58,7 +58,6 @@ async function softDelete(userId) {
   await pool.execute(
     `UPDATE users
        SET deleted_at = NOW(),
-           status = 'banned',
            updated_at = NOW()
      WHERE id = ? AND deleted_at IS NULL`,
     [userId]
