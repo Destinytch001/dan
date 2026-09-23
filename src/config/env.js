@@ -39,15 +39,14 @@ const env = {
   SMTP_FROM_EMAIL: process.env.SMTP_FROM_EMAIL || 'no-reply@housebank.local',
   SMTP_FROM_NAME: process.env.SMTP_FROM_NAME || 'HouseBank',
 
-  // Prefer Resend whenever a key is present; keep SMTP only as an explicit
-  // fallback or when no Resend key is configured. Brevo remains supported
-  // as a secondary fallback if the app is intentionally switched back.
-  RESEND_API_KEY: (process.env.RESEND_API_KEY || '').trim(),
+  // Prefer Brevo whenever a key is present; keep SMTP only as an explicit
+  // fallback or when no Brevo key is configured. This keeps the app working
+  // for existing SMTP setups while making the Brevo API the default for
+  // the current setup using BREVO_API_KEY in .env.
   BREVO_API_KEY: (process.env.BREVO_API_KEY || '').trim(),
   MAIL_DRIVER: (() => {
     const driver = (process.env.MAIL_DRIVER || '').toLowerCase().trim();
     if (driver === 'smtp') return 'smtp';
-    if (driver === 'resend' || (process.env.RESEND_API_KEY || '').trim()) return 'resend';
     if (driver === 'brevo' || (process.env.BREVO_API_KEY || '').trim()) return 'brevo';
     return 'smtp';
   })(),
